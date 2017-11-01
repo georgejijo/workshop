@@ -1,19 +1,6 @@
-var express = require('express');
-var app = express();
+var http = require('http');
 
-app.post("/", function(req, res){
-  if(req.query)
-  {
-    console.log(req.query.Analytics);
-  }
-}).on("error", function(e){
-  console.log("Got error: " + e.message);
-});
-
-// Tell our app to listen on port 8080
-app.listen(process.env.PORT || 5000, function (err) {
-  if (err) {
-    throw err
-  }
-console.log('Server started on port 8080')
-})
+http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello World!');
+}).listen(process.env.PORT || 5000);
