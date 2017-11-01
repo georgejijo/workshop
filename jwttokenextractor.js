@@ -11,7 +11,7 @@ app.post("/", function(req, res){
 });
 
 // Tell our app to listen on port 8080
-app.listen(8080, function (err) {
+app.listen(process.env.PORT || 5000, function (err) {
   if (err) {
     throw err
   }
