@@ -4,7 +4,8 @@
   "description": "JWT token decrypting app",
   "main": "jwttokenextractor.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"start": "node jwttokenextractor.js"
   },
   "author": "Jijo George",
   "license": "ISC"
