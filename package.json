@@ -5,8 +5,12 @@
   "main": "jwttokenextractor.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"start": "node jwttokenextractor.js"
+    "start": "node jwttokenextractor.js"
   },
   "author": "Jijo George",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "njwt": "^0.4.0"
+  }
 }
