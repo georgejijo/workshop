@@ -63,5 +63,7 @@ app.listen(port, function (err) {
   if (err) {
     throw err
   }
+
   console.log('Server started! At http://localhost:' + port);
 });
+ 
