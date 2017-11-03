@@ -1,5 +1,6 @@
 // grab the packages we need
-var nJwt = require('njwt');
+var nJwt = require('jws');
+
 //var rijndael = require('node-rijndael');
 var express = require('express');
 var app = express();
@@ -23,7 +24,7 @@ app.post('/', function(req, res) {
 
     if(token)
     {
-        var jwtverified = nJwt.verify(token, signKey.toString(), 'RS256', function(err,decodedJwt){
+        var jwtverified = nJwt.verify(token, 'RS256', signKey.toString(), function(err,decodedJwt){
             if(err)
             {
               console.log('##### ERROR ######' + err); // Token has expired, has been tampered with, etc  
