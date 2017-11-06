@@ -13,7 +13,6 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-// POST http://localhost:8080/
 // parameters sent with 
 app.post('/', function(req, res) {
     var token=null;
