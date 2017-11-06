@@ -1,7 +1,6 @@
 // grab the packages we need
 var nJwt = require('jws');
 
-//var rijndael = require('node-rijndael');
 var express = require('express');
 var app = express();
 var port = process.env.PORT || 8080;
@@ -28,6 +27,7 @@ app.post('/', function(req, res) {
 
         if(jwtverified)
           {
+            //Display details if verified
             var decodedJwt = nJwt.decode(token, {complete: true});
             console.log(decodedJwt.header);
             console.log(decodedJwt.payload);
