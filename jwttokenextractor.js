@@ -71,11 +71,6 @@ app.listen(port, function (err) {
   if (err) {
     throw err
   }
-<<<<<<< HEAD
-
-=======
   
->>>>>>> 6e457af10f89278b2a0cfacd4d24402f72de8296
   console.log('Server started! At http://localhost:' + port);
 });
- 
