@@ -27,43 +27,21 @@ app.post('/', function(req, res) {
 
         if(jwtverified)
           {
-            //Display details if verified
-            var decodedJwt = nJwt.decode(token, {complete: true}, function(err, decoded) {
-            if(err){
-              res.writeHead(200, { 'Content-Type': 'text/html' });
-              var html = '<!DOCTYPE html><html><head><title>JWT Token Details</title></head><body><div style="max-width: 600px;overflow-wrap: break-word;">';
-              html += '<h2>Token Error</h2></ br>';
-              html += err.message;
-              html += '</div></body></html>';
-              res.end(html, 'utf-8');
-            }else{
-              
-            }
-          });
-            console.log(decodedJwt.header);
-            console.log(decodedJwt.payload);
+            var decodedJwt = nJwt.decode(token, {complete: true});
 
             res.writeHead(200, { 'Content-Type': 'text/html' });
-            var html = '<!DOCTYPE html><html><head><title>JWT Token Details</title></head><body><div style="max-width: 600px;overflow-wrap: break-word;">';
-            html += '<h2>Token Details</h2></ br>';
-            html += JSON.stringify(decodedJwt.payload);
-            html += '</div></body></html>';
-            res.end(html, 'utf-8');
+            res.end(CreateHtml('Token Details', JSON.stringify(decodedJwt.payload)), 'utf-8');
           }
         else
           {
             console.log('Token verification failed..!!');
           }        
-      } 
+      }
       catch(err) 
       {
-        console.log('##### ERROR ######' + err); // Token has expired, has been tampered with, etc  
+        console.log(err);
         res.writeHead(200, { 'Content-Type': 'text/html' });
-        var html = '<!DOCTYPE html><html><head><title>JWT Token Details</title></head><body><div style="max-width: 600px;overflow-wrap: break-word;">';
-        html += '<h2>Token Error</h2></ br>';
-        html += err;
-        html += '</div></body></html>';
-        res.end(html, 'utf-8');   
+        res.end(CreateHtml('Token Error', err.message), 'utf-8');   
       }               
     }
     else
@@ -82,3 +60,13 @@ app.listen(port, function (err) {
   
   console.log('Server started! At http://localhost:' + port);
 });
+
+function CreateHtml(title, content){
+  var html = '<!DOCTYPE html><html><head><title>JWT Token Details</title></head><body><div style="max-width: 600px;overflow-wrap: break-word;"><h2>';
+  html += title;
+  html += '</h2></ br>';
+  html += content;
+  html += '</div></body></html>';
+
+  return html;
+}
